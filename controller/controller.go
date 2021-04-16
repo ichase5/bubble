@@ -12,7 +12,7 @@ func IndexHandler(c *gin.Context){
 
 func CreateHandler(c *gin.Context){
 	var todo models.Todo
-	c.BindJSON(&todo)//json解析，填充struct
+	c.BindJSON(&todo)//json解析，填充todo的title字段
 	err := models.CreateTodo(&todo)
 	if err!=nil{
 		c.JSON(http.StatusOK,gin.H{
@@ -50,7 +50,7 @@ func UpdateHandler(c *gin.Context){
 		return
 	}
 	//修改为哪种状态(json参数)
-	c.BindJSON(&todo)
+	c.BindJSON(todo)
 	if err=models.UpdateTodo(todo);err!=nil{
 		c.JSON(http.StatusOK,gin.H{
 			"error" : err.Error(),

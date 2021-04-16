@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//*表示引用传递
 func SetUpRouter() *gin.Engine{
 	r := gin.Default()
 
@@ -27,6 +28,7 @@ func SetUpRouter() *gin.Engine{
 		//修改某个todo的状态,目标状态在json参数里
 		group.PUT("/todo/:id",controller.UpdateHandler)
 
+		//删除某个todo
 		group.DELETE("/todo/:id",controller.DeleteHandler)
 	}
 	return r

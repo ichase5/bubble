@@ -19,6 +19,7 @@ func main() {
 	//自动创建表 (表名todos)
 	dao.DB.AutoMigrate(&models.Todo{})
 
+	//r就是web engine
 	r := routers.SetUpRouter()
 
 	r.Run(":80")
